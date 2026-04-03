@@ -1,0 +1,98 @@
+body{
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #1F704A;
+    margin: 0;
+}
+
+header{
+    background-color: #0B3218;
+    padding: 14px 50px;
+    display: flex;
+    justify-content: space-between;
+    align-items:  center;
+    position: relative;
+}
+
+#logo{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+}
+
+#menu-button{
+    background: transparent;
+    border: 0;
+    padding: 0;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+#menu{
+    width: 30px;
+    height: 30px;
+    transition: transform 0.35s ease;
+}
+
+/* O proprio estado ARIA do botao controla a rotacao do SVG. */
+#menu-button[aria-expanded="true"] #menu{
+    transform: rotateZ(180deg);
+}
+
+.menu-panel{
+    position: absolute;
+    top: 50%;
+    right: calc(50px + 44px);
+    opacity: 0;
+    transform: translateY(-50%) translateX(16px);
+    pointer-events: none;
+    transition: opacity 0.25s ease, transform 0.25s ease;
+}
+
+/* Classe adicionada pelo JS para abrir/fechar com animacao. */
+.menu-panel.open{
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+    pointer-events: auto;
+}
+
+.menu-panel ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    gap: 0;
+}
+
+.menu-panel li + li{
+    position: relative;
+    margin-left: 16px;
+    padding-left: 16px;
+}
+
+.menu-panel li + li::before{
+    content: "|";
+    position: absolute;
+    left: 0;
+    color: #ffffff;
+    opacity: 0.9;
+}
+
+.menu-panel a{
+    color: #ffffff;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 24px;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.menu-panel a:hover{
+    text-shadow: 0 0 10px rgba(44, 153, 53, 0.856);
+} 
+
+.menu-panel a.selected{
+    text-decoration: underline;
+    text-underline-offset: 4px;
+}
