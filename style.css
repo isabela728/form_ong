@@ -101,7 +101,7 @@ header{
     border-radius: 20px;
     background: #B7D0AF;
     padding: 20px;
-    margin: 35px auto;
+    margin: 50px auto;
     width: 85%;
 }
 
@@ -165,4 +165,24 @@ footer > p{
 .footer-div img{
     width: 20px;
     height: 20px;
+}
+
+a{
+    text-decoration: none;
+    color: #ffff;
+}
+
+.absolute{
+    position: absolute;
+}
+
+button{
+    border-radius: 5px;
+    border: none;
+    padding: 5px;
+    font-size: 18px;
+}
+
+.menor{
+    margin-top: 80px;
 }
