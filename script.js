@@ -14,7 +14,7 @@ if (botaoMenu && painelMenu) {
         definirEstadoMenu(!estaAberto);
     });
 
-    // Fecha ao clicar fora do botão/painel.
+    // Fecha ao clicar fora do botão.
     document.addEventListener('click', (evento) => {
         const alvo = evento.target;
         if (!(alvo instanceof Node)) {
@@ -26,12 +26,5 @@ if (botaoMenu && painelMenu) {
         }
 
         definirEstadoMenu(false);
-    });
-
-    // Fecha com ESC para melhorar usabilidade no teclado.
-    document.addEventListener('keydown', (evento) => {
-        if (evento.key === 'Escape') {
-            definirEstadoMenu(false);
-        }
     });
 }
