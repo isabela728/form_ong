@@ -125,7 +125,34 @@ function validarDados(evento) {
         return false;
     }
 
-    
-    return true;
+    const nomeRegex = /^[a-zA-Z\s]+$/;
 
+    if (!nomeRegex.test(nome.value)) {
+        evento.preventDefault();
+        alert('O nome deve conter apenas letras e espaços.');
+        return false;
+    }
+
+    if (nome.value.trim().length <= 3) { //verifica se o nome (sem os espa~ços) tem pelo menos 3 caracteres
+        evento.preventDefault();
+        alert('O nome deve ter pelo menos 3 caracteres.');
+        return false;
+    }
+
+    telefone.value = telefone.value.replace(/[()\s-]/g, ''); // Remove parênteses e espaços do telefone caso tenha sido inserido pelo usuário
+    const telefoneRegex = /^\d{10,11}$/; //valida se o telefone tem 10 ou 11 digitos
+    const telefoneValido = parseInt(telefone.value.trim());
+
+    if (!telefoneRegex.test(telefone.value.trim()) || isNaN(telefoneValido)){
+        evento.preventDefault();
+        alert('Informe um telefone válido com 10 ou 11 dígitos, sem espaços ou caracteres especiais.');
+        return false;
+    }
+
+
+
+
+
+
+    return true;
 }
