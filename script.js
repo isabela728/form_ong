@@ -95,9 +95,19 @@ function validarDados(evento) {
         return false;
     }
 
-    if (Number(idade.value) < 18) {
+    const idadeRegex=/[^0-9]/; //regex valida se a idade contém apenas números
+
+    if (idadeRegex.test(idade.value) || idadeNum > 120 || idadeNum < 0) {
         evento.preventDefault();
-        alert('Infelizmente, para adotar um pet, é necessário ter pelo menos 18 anos de idade.');
+        alert('Informe uma idade válida.');
+        return false;
+    }
+
+    const idadeNum = parseInt(idade.value, 10); //verifica se é número inteiro
+
+    if (idadeNum < 18) {
+        evento.preventDefault();
+        alert('Infelizmente, para adotar um pet, é necessário ter pelo menos 18 anos.');
         return false;
     }
 
