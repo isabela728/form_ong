@@ -408,6 +408,10 @@ a{
     display: none !important; /* Para garantir que o campo fique completamente oculto, mesmo se o atributo "hidden" for manipulado via JavaScript. */
 }
 
+#tem_quintal[hidden]{
+    display: none !important; /* Para garantir que o campo fique completamente oculto, mesmo se o atributo "hidden" for manipulado via JavaScript. */
+}
+
 .opcao-item{
     display: inline-flex;
     align-items: center;

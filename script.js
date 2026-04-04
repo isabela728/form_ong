@@ -21,28 +21,44 @@ if (formularioAdocao) {
 }
 
 function expandir_moradia(){
-    const campoExtra = document.getElementById('permite_animais');
+    const campoExtraP = document.getElementById('permite_animais');
+    const campoExtraQ = document.getElementById('tem_quintal');
     const ap = document.getElementById('ap');
     const casa = document.getElementById('casa');
     const opcoesPermiteAnimais = document.querySelectorAll('input[name="permite_animais"]');
+    const opcoesQuintal = document.querySelectorAll('input[name="quintal"]');
 
-    if (!campoExtra || !ap || !casa) {
+
+
+    if (!campoExtraP || !campoExtraQ || !ap || !casa) {
         return;
     }
 
     if (ap.checked) {
-        campoExtra.hidden = false; // Exibe o campo "permite_animais" quando a opção "Apartamento" é selecionada
-        opcoesPermiteAnimais.forEach((opcao) => {
-            opcao.required = true; // Torna as opções "permite_animais" obrigatórias quando a opção "Apartamento" é selecionada
+        campoExtraP.hidden = false; // Exibe o campo "permite_animais" quando a opção "Apartamento" é selecionada
+        campoExtraQ.hidden = true; // Exibe o campo "tem_quintal" quando a opção "Apartamento" é selecionada
+
+        opcoesPermiteAnimais.forEach((opcaoP) => {
+            opcaoP.required = true; // Torna as opções "permite_animais" obrigatórias quando a opção "Apartamento" é selecionada
+        });
+        opcoesQuintal.forEach((opcaoQ) => {
+            opcaoQ.required = false;
+            opcaoQ.checked = false;
         });
         return;
     }
 
     if (casa.checked) {
-        campoExtra.hidden = true; // Oculta o campo "permite_animais" quando a opção "Casa" é selecionada
-        opcoesPermiteAnimais.forEach((opcao) => {
-            opcao.required = false; // Torna as opções "permite_animais" não obrigatórias quando a opção "Casa" é selecionada
-            opcao.checked = false;
+        campoExtraP.hidden = true; // Oculta o campo "permite_animais" quando a opção "Casa" é selecionada
+        campoExtraQ.hidden = false; // Oculta o campo "tem_quintal" quando a opção "Casa" é selecionada
+
+        opcoesPermiteAnimais.forEach((opcaoP) => {
+            opcaoP.required = false; // Torna as opções "permite_animais" não obrigatórias quando a opção "Casa" é selecionada
+            opcaoP.checked = false;
+
+        });
+        opcoesQuintal.forEach((opcaoQ) => {
+            opcaoQ.required = true;
         });
     }
 }
@@ -78,7 +94,6 @@ function validarDados(evento) {
         !idade.value.trim() ||
         !cidade.value.trim() ||
         !moradiaSelecionada || // Verifica se alguma opçãofoi selecionada
-        !quintalSelecionado ||
         !petSelecionado ||
         !horas.value.trim() ||
         !mensagem.value.trim() ||
@@ -175,7 +190,7 @@ function validarDados(evento) {
     }
 
 
-    
+
 
 
 
