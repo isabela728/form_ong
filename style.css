@@ -2,6 +2,10 @@ body{
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     background-color: #1F704A;
     margin: 0;
+    min-height: 100vh;
+    overflow-x: hidden;
+    display: flex;
+    flex-direction: column;
 }
 
 header{
@@ -140,16 +144,12 @@ header{
 footer{
     background: #0B3218;
     height: 180px;
-    margin-top: 50px;
+    margin-top: 20px;
     width: 100%;
     align-items: center;
     display: flex;
-
-    bottom: 0px;
-    left: 0px;
-    right: 0px;
-    margin-bottom: 0px;
     position: relative;
+    z-index: 4;
 }
 
 footer > p{
@@ -294,3 +294,240 @@ a{
     box-sizing: border-box; 
     padding-left: 100px;
 }
+
+/* Formulario de adocao inspirado em Google Forms. */
+.adocao-main{
+    padding: 42px 20px 24px;
+    flex: 1;
+}
+
+.formulario-cena{
+    position: relative;
+    max-width: 1600px;
+    margin: 0 auto;
+    padding-inline: clamp(0px, 0.8vw, 12px);
+    overflow: visible;
+}
+
+.formulario-adocao{
+    max-width: 900px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    position: relative;
+    z-index: 2;
+}
+
+.bloco-titulo{
+    background: linear-gradient(180deg, #0b4a24 0%, #063315 100%);
+    border-radius: 16px;
+    color: #d6e5ce;
+    padding: 22px 28px;
+    box-shadow: 0 10px 24px rgba(3, 27, 13, 0.22);
+}
+
+.bloco-titulo h1{
+    margin: 0;
+    font-family: Kadwa, Georgia, serif;
+    font-size: 44px;
+    line-height: 1;
+    letter-spacing: 0.2px;
+}
+
+.bloco-titulo p{
+    margin: 12px 0 0;
+    color: #dcead3;
+    font-size: 20px;
+}
+
+.questao-card{
+    background: #b8d0a7;
+    border-radius: 14px;
+    padding: 22px 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border: 1px solid rgba(6, 45, 19, 0.2);
+    transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.questao-card:hover,
+.questao-card:focus-within{
+    border-color: rgba(8, 59, 24, 0.55);
+    box-shadow: 0 8px 16px rgba(7, 44, 19, 0.14);
+}
+
+.questao-card label,
+.pergunta-titulo{
+    font-size: 25px;
+    color: #122115;
+    line-height: 1.2;
+    margin: 0;
+}
+
+.questao-card input[type="text"],
+.questao-card input[type="email"],
+.questao-card input[type="tel"],
+.questao-card input[type="number"],
+.questao-card input[type="time"],
+.questao-card textarea{
+    width: min(100%, 520px);
+    background: transparent;
+    border: 0;
+    border-bottom: 3px solid rgba(17, 49, 25, 0.35);
+    font-size: 20px;
+    padding: 7px 0;
+    color: #041108;
+    outline: none;
+}
+
+.questao-card input::placeholder,
+.questao-card textarea::placeholder{
+    color: rgba(10, 35, 16, 0.6);
+}
+
+.questao-card input:focus,
+.questao-card textarea:focus{
+    border-bottom-color: #114b24;
+}
+
+.questao-card textarea{
+    min-height: 110px;
+    resize: vertical;
+}
+
+.opcoes-card{
+    border: 1px solid rgba(6, 45, 19, 0.2);
+    margin: 0;
+    min-width: 0;
+    padding-top: 22px;
+}
+
+.opcao-item{
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-right: 30px;
+    margin-top: 8px;
+    cursor: pointer;
+}
+
+.opcao-item span{
+    font-size: 24px;
+    color: #122115;
+}
+
+.opcao-item input[type="radio"],
+.opcao-item input[type="checkbox"]{
+    width: 20px;
+    height: 20px;
+    accent-color: #0b4a24;
+}
+
+.termo-card{
+    gap: 0;
+}
+
+.acoes-formulario{
+    display: flex;
+    justify-content: flex-end;
+}
+
+.acoes-formulario button{
+    background: #0c3d1d;
+    color: #d9ebce;
+    border: 0;
+    border-radius: 999px;
+    padding: 14px 28px;
+    font-size: 22px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.15s ease, background-color 0.15s ease;
+}
+/* inicio animacao pata */
+
+.patas-lateral{
+    --spread: 1.2;
+    position: absolute;
+    top: 8px;
+    bottom: clamp(120px, 9vw, 170px);
+    width: clamp(220px, 17vw, 320px);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    font-size: clamp(102px, 7.8vw, 220px);
+    color: rgba(206, 227, 194, 0.88);
+    pointer-events: none;
+    overflow: visible;
+    z-index: 1;
+}
+
+.patas-esquerda{
+    left: 0;
+    transform: translateX(-88%);
+}
+
+.patas-direita{
+    right: 0;
+    transform: translateX(88%) scaleX(-1);
+}
+
+.patas-lateral .paw{
+    --x: 0px;
+    --r: 0deg;
+    display: flex;
+    justify-content: center;
+    line-height: 1;
+    opacity: 0;
+    transform: translateX(calc(var(--x) * var(--spread))) translateY(10px) rotate(var(--r)) scale(0.9);
+    animation: pawTrail 3.1s ease-in-out infinite;
+}
+
+.patas-lateral .paw:nth-child(1){ --x: -38px; --r: -23deg; animation-delay: 3.06s; }
+.patas-lateral .paw:nth-child(2){ --x: 34px; --r: 21deg; animation-delay: 2.88s; }
+.patas-lateral .paw:nth-child(3){ --x: -33px; --r: -19deg; animation-delay: 2.7s; }
+.patas-lateral .paw:nth-child(4){ --x: 30px; --r: 18deg; animation-delay: 2.52s; }
+.patas-lateral .paw:nth-child(5){ --x: -36px; --r: -20deg; animation-delay: 2.34s; }
+.patas-lateral .paw:nth-child(6){ --x: 31px; --r: 18deg; animation-delay: 2.16s; }
+.patas-lateral .paw:nth-child(7){ --x: -29px; --r: -17deg; animation-delay: 1.98s; }
+.patas-lateral .paw:nth-child(8){ --x: 28px; --r: 16deg; animation-delay: 1.8s; }
+.patas-lateral .paw:nth-child(9){ --x: -34px; --r: -19deg; animation-delay: 1.62s; }
+.patas-lateral .paw:nth-child(10){ --x: 30px; --r: 18deg; animation-delay: 1.44s; }
+.patas-lateral .paw:nth-child(11){ --x: -28px; --r: -16deg; animation-delay: 1.26s; }
+.patas-lateral .paw:nth-child(12){ --x: 26px; --r: 15deg; animation-delay: 1.08s; }
+.patas-lateral .paw:nth-child(13){ --x: -32px; --r: -18deg; animation-delay: 0.9s; }
+.patas-lateral .paw:nth-child(14){ --x: 28px; --r: 16deg; animation-delay: 0.72s; }
+.patas-lateral .paw:nth-child(15){ --x: -26px; --r: -15deg; animation-delay: 0.54s; }
+.patas-lateral .paw:nth-child(16){ --x: 24px; --r: 14deg; animation-delay: 0.36s; }
+.patas-lateral .paw:nth-child(17){ --x: -30px; --r: -17deg; animation-delay: 0.18s; }
+.patas-lateral .paw:nth-child(18){ --x: 27px; --r: 15deg; animation-delay: 0s; }
+
+/* Remove as 10 patas do fim da pagina (5 por lado). */
+.patas-lateral .paw:nth-last-child(-n+8){
+    display: none;
+}
+
+@keyframes pawTrail {
+    0%,
+    100% {
+        opacity: 0;
+        transform: translateX(calc((var(--x) * var(--spread)) - 8px)) translateY(12px) rotate(calc(var(--r) - 6deg)) scale(0.86);
+    }
+    18% {
+        opacity: 0.2;
+    }
+    34% {
+        opacity: 0.98;
+        transform: translateX(calc(var(--x) * var(--spread))) translateY(0) rotate(var(--r)) scale(1);
+    }
+    52% {
+        opacity: 0.6;
+    }
+    72% {
+        opacity: 0;
+        transform: translateX(calc((var(--x) * var(--spread)) + 7px)) translateY(-12px) rotate(calc(var(--r) + 5deg)) scale(0.94);
+    }
+}
+
+/* fim animacao pata */
