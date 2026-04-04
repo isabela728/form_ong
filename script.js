@@ -97,13 +97,13 @@ function validarDados(evento) {
 
     const idadeRegex=/[^0-9]/; //regex valida se a idade contém apenas números
 
+    const idadeNum = parseInt(idade.value, 10); //verifica se é número inteiro
+
     if (idadeRegex.test(idade.value) || idadeNum > 120 || idadeNum < 0) {
         evento.preventDefault();
         alert('Informe uma idade válida.');
         return false;
     }
-
-    const idadeNum = parseInt(idade.value, 10); //verifica se é número inteiro
 
     if (idadeNum < 18) {
         evento.preventDefault();
@@ -111,8 +111,21 @@ function validarDados(evento) {
         return false;
     }
 
-    
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/; //regex valida se o email tem formato correto
 
+    if (!email.value.includes('@')) {
+        evento.preventDefault();
+        alert('O email deve conter o símbolo "@" para ser válido.');
+        return false;
+    }
+
+    if (!emailRegex.test(email.value)) {
+        evento.preventDefault();
+        alert('Informe um email válido.');
+        return false;
+    }
+
+    
     return true;
 
 }
