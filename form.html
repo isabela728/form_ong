@@ -110,12 +110,24 @@
             <section class="questao-card opcoes-card">
                 <p class="pergunta-titulo">Tipo de moradia*</p>
                 <label class="opcao-item" for="casa">
-                    <input type="radio" id="casa" name="moradia" required>
+                    <input type="radio" id="casa" name="moradia" value="casa" required>
                     <span>Casa</span>
                 </label>
                 <label class="opcao-item" for="ap">
-                    <input type="radio" id="ap" name="moradia" required>
+                    <input type="radio" id="ap" name="moradia" value="ap" required>
                     <span>Apartamento</span>
+                </label>
+            </section>
+
+            <section class="questao-card opcoes-card" id="permite_animais" hidden>
+                <p class="pergunta-titulo">No apartamento, animais são permitidos?*</p>
+                <label class="opcao-item" for="permite-sim">
+                    <input type="radio" id="permite-sim" name="permite_animais" value="sim">
+                    <span>Sim</span>
+                </label>
+                <label class="opcao-item" for="permite-nao">
+                    <input type="radio" id="permite-nao" name="permite_animais" value="nao">
+                    <span>Não</span>
                 </label>
             </section>
 
@@ -132,7 +144,7 @@
             </section>
 
             <section class="questao-card opcoes-card">
-                <p class="pergunta-titulo">Ja teve pet antes?*</p>
+                <p class="pergunta-titulo">Já teve pet antes?*</p>
                 <label class="opcao-item" for="pet-sim">
                     <input type="radio" id="pet-sim" name="pet" required>
                     <span>Sim</span>
@@ -161,7 +173,7 @@
             </section>
 
             <div class="acoes-formulario">
-                <button type="submit">Enviar formulário</button>
+                <input id="botao-enviar-form" type="submit" value="Enviar formulário">
             </div>
             </form>
         </div>

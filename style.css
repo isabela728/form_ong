@@ -310,7 +310,7 @@ a{
 }
 
 .formulario-adocao{
-    max-width: 900px;
+    max-width: 760px;
     margin: 0 auto;
     display: flex;
     flex-direction: column;
@@ -404,6 +404,10 @@ a{
     padding-top: 22px;
 }
 
+#permite_animais[hidden]{
+    display: none !important; /* Para garantir que o campo fique completamente oculto, mesmo se o atributo "hidden" for manipulado via JavaScript. */
+}
+
 .opcao-item{
     display: inline-flex;
     align-items: center;
@@ -434,13 +438,13 @@ a{
     justify-content: flex-end;
 }
 
-.acoes-formulario button{
+.acoes-formulario input[type="submit"]{
     background: #0c3d1d;
     color: #d9ebce;
     border: 0;
     border-radius: 999px;
-    padding: 14px 28px;
-    font-size: 22px;
+    padding: 10px 20px;
+    font-size: 18px;
     font-weight: 700;
     cursor: pointer;
     transition: transform 0.15s ease, background-color 0.15s ease;
@@ -465,12 +469,12 @@ a{
 
 .patas-esquerda{
     left: 0;
-    transform: translateX(-88%);
+    transform: translateX(-52%);
 }
 
 .patas-direita{
     right: 0;
-    transform: translateX(88%) scaleX(-1);
+    transform: translateX(52%) scaleX(-1);
 }
 
 .patas-lateral .paw{
