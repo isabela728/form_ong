@@ -145,11 +145,37 @@ function validarDados(evento) {
 
     if (!telefoneRegex.test(telefone.value.trim()) || isNaN(telefoneValido)){
         evento.preventDefault();
-        alert('Informe um telefone válido com 10 ou 11 dígitos, sem espaços ou caracteres especiais.');
+        alert('Informe um telefone válido ');
+        return false;
+    }
+
+    const horasRegex = /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/; //regex valida se o horário tem formato HH:MM
+
+    if (!horasRegex.test(horas.value.trim())){
+        evento.preventDefault();
+        alert('Informe um horário válido no formato HH:MM.');
         return false;
     }
 
 
+    if (mensagem.value.trim().length <= 10) {
+        evento.preventDefault();
+        alert('A mensagem deve conter pelo menos 10 caracteres.');
+        return false;
+    }
+
+    cpf.value = cpf.value.replace(/[-.()\s-]/g, ''); // Remove pontos, traços, parenteses e espaços
+    const cpfRegex = /^\d{11}$/; //valida se o cpf tem 11 digitos
+    const cpfValido = parseInt(cpf.value.trim());
+
+    if (!cpfRegex.test(cpf.value.trim()) || isNaN(cpfValido)) {
+        evento.preventDefault();
+        alert('informe um CPF válido.');
+        return false;
+    }
+
+
+    
 
 
 
