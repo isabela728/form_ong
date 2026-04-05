@@ -222,6 +222,18 @@ function validarDados(evento) {
         alert('informe um CPF válido.');
         return false;
     }
+
+    if (petSelecionado.value === 'pet-nao') {
+        const acompanhamento = confirm("Por não ter possuído um pet antes, você poderá ter acompanhamento da ONG. Clique em OK para confirmar o envio.");
+        if (!acompanhamento) {
+            evento.preventDefault();
+            return false;
+        }
+    }
+
+    
+
+
     return true;
 }
 //final da função de validação dos dados do formulário
