@@ -409,7 +409,11 @@ a{
 }
 
 #tem_quintal[hidden]{
-    display: none !important; /* Para garantir que o campo fique completamente oculto, mesmo se o atributo "hidden" for manipulado via JavaScript. */
+    display: none !important;
+}
+
+#justi[hidden]{
+    display: none !important;
 }
 
 .opcao-item{

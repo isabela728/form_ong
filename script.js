@@ -2,6 +2,7 @@ const botaoMenu = document.getElementById('menu-button');
 const painelMenu = document.getElementById('header-menu');
 const formularioAdocao = document.getElementById('form');
 
+// Função para abrir o menu
 if (botaoMenu && painelMenu) {
     const definirEstadoMenu = (estaAberto) => {
         painelMenu.classList.toggle('open', estaAberto); // Alterna a classe 'open' no painel do menu
@@ -19,7 +20,9 @@ if (botaoMenu && painelMenu) {
 if (formularioAdocao) {
     formularioAdocao.addEventListener('submit', validarDados); // "Escuta" o evento de envio do formulário e executa função de validação
 }
+//final da função de abrir o menu
 
+// Função para expandir o campo de moradia
 function expandir_moradia(){
     const campoExtraP = document.getElementById('permite_animais');
     const campoExtraQ = document.getElementById('tem_quintal');
@@ -62,14 +65,45 @@ function expandir_moradia(){
         });
     }
 }
-
 const opcoesMoradia = document.querySelectorAll('input[name="moradia"]');
 opcoesMoradia.forEach((opcao) => { //cada vez que a opção de moradia mudar, ele vai "escutar" e espandir ou ocultar o campo extra
     opcao.addEventListener('change', expandir_moradia);
 });
-
 expandir_moradia();
+//final da função de expandir o campo de moradia
 
+
+// Função para expandir o campo de justificativa
+function expandir_horas(){
+    const campoExtraJ = document.getElementById('justi');
+    const horas = document.getElementById('horas');
+    const justificativa = document.getElementById('justificativa');
+    const horasRegex = /^([0-1]?[0-9]|2[0-3]):[0-5][0-9]$/;
+
+    if (!campoExtraJ || !horas || !justificativa) {
+        return;
+    }
+
+    const valorHoras = horas.value.trim();
+
+    if (horasRegex.test(valorHoras) && valorHoras > '08:00') {
+        campoExtraJ.hidden = false; // exibe o campo de justificativa
+        justificativa.required = true;
+    } else {
+        campoExtraJ.hidden = true; // oculta o campo caso não atenda à condição
+        justificativa.required = false;
+    }
+}
+const horasInput = document.getElementById('horas');
+if (horasInput) {
+    horasInput.addEventListener('input', expandir_horas);
+}
+expandir_horas();
+//final da função de expandir o campo de justificativa
+
+
+
+// Função para validar os dados do formulário
 function validarDados(evento) {
 
     const nome = document.getElementById('nome');
@@ -188,12 +222,6 @@ function validarDados(evento) {
         alert('informe um CPF válido.');
         return false;
     }
-
-
-
-
-
-
-
     return true;
 }
+//final da função de validação dos dados do formulário
