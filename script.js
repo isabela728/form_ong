@@ -1,6 +1,8 @@
 const botaoMenu = document.getElementById('menu-button');
 const painelMenu = document.getElementById('header-menu');
 const formularioAdocao = document.getElementById('form');
+const CPFS_SESSAO = '31VCpu78IeCJ'; //senha para puxar e armazenar os CPFs na sessão do navegador
+const arrayCPF = JSON.parse(sessionStorage.getItem(CPFS_SESSAO) || '[]'); //recupara os CPFs que já foram armazenados na sessão, se não tiver nenhum, ele faz um array vazio.;
 
 // Função para abrir o menu
 if (botaoMenu && painelMenu) {
@@ -222,6 +224,15 @@ function validarDados(evento) {
         alert('informe um CPF válido.');
         return false;
     }
+
+    if (arrayCPF.includes(cpf.value.trim())) {
+        evento.preventDefault();
+        alert('Este CPF já foi utilizado para uma adoção. Por favor, informe um CPF diferente.');
+        return false;
+    }
+
+    arrayCPF.push(cpf.value.trim()); // Adiciona o CPF atual ao array de CPFs
+    sessionStorage.setItem(CPFS_SESSAO, JSON.stringify(arrayCPF)); //Armazena o array com o CPF digitado no formulário na sessão do navegador.
 
     if (petSelecionado.value === 'pet-nao') {
         const acompanhamento = confirm("Por não ter possuído um pet antes, você poderá ter acompanhamento da ONG. Clique em OK para confirmar o envio.");
