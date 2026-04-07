@@ -459,8 +459,13 @@ a{
     font-size: 18px;
     font-weight: 700;
     cursor: pointer;
-    transition: transform 0.15s ease, background-color 0.15s ease;
 }
+
+.acoes-formulario input[type="submit"]:hover{
+    background: #144d28;
+}
+
+
 /* inicio animacao pata */
 
 .patas-lateral{
@@ -499,6 +504,7 @@ a{
     transform: translateX(calc(var(--x) * var(--spread))) translateY(10px) rotate(var(--r)) scale(0.9);
     animation: pawTrail 3.1s ease-in-out infinite;
 }
+
 
 .patas-lateral .paw:nth-child(1){ --x: -38px; --r: -23deg; animation-delay: 3.06s; }
 .patas-lateral .paw:nth-child(2){ --x: 34px; --r: 21deg; animation-delay: 2.88s; }
